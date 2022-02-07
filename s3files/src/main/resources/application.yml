@@ -1,0 +1,41 @@
+#Application properties
+server:
+  port: 8081
+  tomcat:
+    max-swallow-size: 786432000
+    max-http-form-post-size: 786432000
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 750MB
+      max-request-size: 750MB
+
+
+#AWS properties
+cloud:
+  aws:
+    region:
+      static: us-east-1
+    stack:
+      auto: false
+    credentials:
+      accessKey: AKIA2H2AQAXUOJX63F5C
+      secretKey: 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
+
+application:
+  bucket:
+    name: test-file-stor
+
+logging:
+  level:
+    com:
+      amazonaws:
+        util:
+          EC2MetadataUtils: error
+
+upload:
+  dir: D:\micorservices\s3files\upload
+
+download:
+  dir: D:\micorservices\s3files\download
