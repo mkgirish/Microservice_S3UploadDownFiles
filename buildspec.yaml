@@ -1,0 +1,20 @@
+version: 0.2
+env:
+  variables:
+    APP_NAME: s3Files
+    FOLDER: s3files
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+    commands:
+      - WORKSPACE="$CODEBUILD_SRC_DIR"
+      - echo "Building branch $WORKSPACE"
+  build:
+    commands:
+      - echo $WORKSPACE
+      - cd $FOLDER
+      - pwd
+      - ls
+      - echo "Building $FOLDER microservice"
+      - mvn clean install
