@@ -2,9 +2,7 @@ package com.example.s3files.s3files.services;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
-import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.ListObjectsV2Result;
 import com.amazonaws.services.s3.model.ObjectMetadata;
@@ -17,10 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -47,11 +42,14 @@ public class AWSS3StorageService {
             return "File uploaded: " + keyName;
         } catch (IOException ioe) {
             logger.error("IOException: " + ioe.getMessage());
+            ioe.printStackTrace();
         } catch (AmazonServiceException serviceException) {
             logger.info("AmazonServiceException: "+ serviceException.getMessage());
+            serviceException.printStackTrace();
             throw serviceException;
         } catch (AmazonClientException clientException) {
             logger.info("AmazonClientException Message: " + clientException.getMessage());
+            clientException.printStackTrace();
             throw clientException;
         }
         return "File not uploaded: " + keyName;
