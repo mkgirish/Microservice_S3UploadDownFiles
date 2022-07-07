@@ -6,7 +6,7 @@ env:
 phases:
   install:
     runtime-versions:
-      java: corretto11
+      java: corretto17
     commands:
       - WORKSPACE="$CODEBUILD_SRC_DIR"
       - echo "Building branch $WORKSPACE"
