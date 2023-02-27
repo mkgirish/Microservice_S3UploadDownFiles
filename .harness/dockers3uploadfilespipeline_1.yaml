@@ -1,0 +1,28 @@
+template:
+  name: dockers3uploadfilespipeline
+  type: Stage
+  projectIdentifier: DockerS3uploadSpringBoot
+  orgIdentifier: default
+  spec:
+    type: CI
+    spec:
+      cloneCodebase: true
+      platform:
+        os: Linux
+        arch: Arm64
+      runtime:
+        type: Docker
+        spec: {}
+      execution:
+        steps:
+          - step:
+              type: BuildAndPushDockerRegistry
+              name: Build and Push an image to Docker Registry_1
+              identifier: BuildandPushanimagetoDockerRegistry_1
+              spec:
+                connectorRef: account.harnessImage
+                repo: https://index.docker.io/v1/
+                tags:
+                  - dockers3uploadfiles
+  identifier: dockers3uploadfilespipeline
+  versionLabel: "1"
