@@ -1,0 +1,18 @@
+pipeline:
+  name: DockerS3UploadFilesPipeline
+  identifier: DockerS3UploadFilesPipeline
+  projectIdentifier: DockerS3uploadSpringBoot
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: DockerS3UploadFilesGitHubConnector
+        build: <+input>
+  stages:
+    - stage:
+        name: build-docker-s3uploadfiles
+        identifier: builddockers3uploadfiles
+        template:
+          templateRef: dockers3uploadfilespipeline
+          versionLabel: "1"
